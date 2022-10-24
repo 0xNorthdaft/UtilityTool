@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JunkClean:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JunkClean_jar</output-path>
+    <root id="archive" name="JunkClean.jar">
+      <element id="module-output" name="JunkClean" />
+    </root>
+  </artifact>
+</component>
