@@ -1,15 +1,14 @@
 package AppPlugins;
 
-
 import java.io.File;
 import java.io.IOException;
 
-public class CacheCleaner {
+import static AppPlugins.CachePaths.*;
+import static java.lang.Runtime.getRuntime;
 
-    final static String pathToMozillaCache = "C:\\Users\\"+ System.getProperty("user.name")+"\\AppData\\Local\\Mozilla\\Firefox\\Profiles\\bju3y0sh.default-release\\cache2\\entries";
-
-    public boolean cleanCacheMozilla() throws IOException {
-        File directory = new File(pathToMozillaCache);
+public class BraveCacheCleaner {
+    public boolean cleanCache() throws IOException {
+        File directory = new File(pathToBraveCache);
         File[] listOfFiles = directory.listFiles();
         for (File file : listOfFiles) {
             if (file.isFile()) {
@@ -19,12 +18,11 @@ public class CacheCleaner {
             }
         }
         return false;
-
     }
 
     //Get the size of the files in the directory in megabytes
     public int getCacheSize() {
-        File directory = new File(pathToMozillaCache);
+        File directory = new File(pathToBraveCache);
         File[] listOfFiles = directory.listFiles();
         int size = 0;
         for (File file : listOfFiles) {
@@ -33,5 +31,9 @@ public class CacheCleaner {
             }
         }
         return size / 1024 / 1024;
+    }
+
+    public void cleanMemory(){
+        getRuntime().gc();
     }
 }
