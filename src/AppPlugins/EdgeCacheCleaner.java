@@ -10,11 +10,13 @@ public class EdgeCacheCleaner {
     public boolean cleanCache() throws IOException {
         File directory = new File(pathToEdgeCache);
         File[] listOfFiles = directory.listFiles();
+        assert listOfFiles != null;
         for (File file : listOfFiles) {
             if (file.isFile()) {
-                if (file.getName().endsWith("")) {
-                    file.delete();
-                }
+                // method endsWith is always True if not suffix is not specified
+                // If no argument is specified, the method can throw NullPointerException
+                file.getName();//place for endsWith
+                file.delete();
             }
         }
         return false;
@@ -22,15 +24,20 @@ public class EdgeCacheCleaner {
 
     //Get the size of the files in the directory in megabytes
     public int getCacheSize() {
-        File directory = new File(pathToEdgeCache);
-        File[] listOfFiles = directory.listFiles();
-        int size = 0;
-        for (File file : listOfFiles) {
-            if (file.isFile()) {
-                size += file.length();
+        try {
+            File directory = new File(pathToEdgeCache);
+            File[] listOfFiles = directory.listFiles();
+            int size = 0;
+            assert listOfFiles != null;
+            for (File file : listOfFiles) {
+                if (file.isFile()) {
+                    size += file.length();
+                }
             }
+            return size / 1024 / 1024;
+        } catch (NullPointerException e) {
+            return 0;
         }
-        return size / 1024 / 1024;
     }
 
     public void cleanMemory(){

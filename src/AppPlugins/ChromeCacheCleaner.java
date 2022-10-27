@@ -6,9 +6,9 @@ import java.io.IOException;
 import static AppPlugins.CachePaths.*;
 import static java.lang.Runtime.getRuntime;
 
-public class MozillaCacheCleaner {
+public class ChromeCacheCleaner {
     public boolean cleanCache() throws IOException {
-        File directory = new File(pathToMozillaCache);
+        File directory = new File(pathToChromeCache);
         File[] listOfFiles = directory.listFiles();
         assert listOfFiles != null;
         for (File file : listOfFiles) {
@@ -24,9 +24,8 @@ public class MozillaCacheCleaner {
 
     //Get the size of the files in the directory in megabytes
     public static int getCacheSize() {
-        //int size;
         try {
-            File directory = new File(pathToMozillaCache);
+            File directory = new File(pathToChromeCache);
             File[] listOfFiles = directory.listFiles();
             int size = 0;
             assert listOfFiles != null;
