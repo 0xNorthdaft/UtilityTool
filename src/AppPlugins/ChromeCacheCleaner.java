@@ -1,3 +1,9 @@
+/*
+ * Utility Tool Build 0.1.2
+ * Made by George "Northdaft" Vilciu
+ * Available for Windows and tested on Windows 8.1, 10 and 11
+ *
+ * */
 package AppPlugins;
 
 import java.io.File;
