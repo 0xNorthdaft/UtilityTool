@@ -26,7 +26,7 @@ public class Main {
         JButton b1 = new JButton("Clean cache of " + MozillaCacheCleaner.getCacheSize()+ "mbs - Firefox"); //Instance of a button
         JButton b2 = new JButton("Clean cache of " + bCleaner.getCacheSize()+ "mbs - Brave"); //Instance of a button
         JButton b3 = new JButton("Clean cache of " + eCleaner.getCacheSize()+ "mbs - Edge"); //Instance of a button
-        JButton b4 = new JButton("Clean cache of " + ccCleaner.getCacheSize()+ "mbs - Chrome"); //Instance of a button
+        JButton b4 = new JButton("Clean cache of " + ChromeCacheCleaner.getCacheSize()+ "mbs - Chrome"); //Instance of a button
         JButton b5 = new JButton("Refresh");//Refresh button
 
         f.setSize(500, 500);//width and height
@@ -40,6 +40,8 @@ public class Main {
         b4.setBounds(100, 89, 250, 25);//pos for Chrome button
         b5.setBounds(180, 440, 80, 25);//pos for Refresh button
 
+
+
         f.add(b1);//Add button to the frame
         f.add(b2);//Add button to the frame
         f.add(b3);//Add button to the frame
@@ -50,7 +52,7 @@ public class Main {
         f.setVisible(true);//Setting the frame to visible
 
 
-        //If the button is clicked, the cache cleaner will be executed
+        //1st button for Firefox's cache
         b1.addActionListener(e -> {
             try {
                 mCleaner.cleanCache();
@@ -62,6 +64,10 @@ public class Main {
             }
             mCleaner.cleanMemory();
         });
+
+
+
+
 
 
         //2nd button for Brave's cache
